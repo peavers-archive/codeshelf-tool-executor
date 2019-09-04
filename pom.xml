@@ -13,7 +13,7 @@
     <artifactId>tool-executor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>codeshelf-tool-executor</name>
-    <description>Handles the execution of commands each tool sends.</description>
+    <description>This stand-alone library handles the basic command execution and push to Firehose.</description>
 
     <properties>
         <java.version>1.8</java.version>
