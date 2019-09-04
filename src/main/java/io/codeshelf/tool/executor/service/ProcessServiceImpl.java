@@ -18,10 +18,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProcessServiceImpl implements ProcessService {
 
+  private final FirehoseService firehoseService;
+
   @Value("${codeshelf.dry}")
   private boolean dry;
-
-  private final FirehoseService firehoseService;
 
   @Override
   public void execute(final List<String> command) throws IOException {

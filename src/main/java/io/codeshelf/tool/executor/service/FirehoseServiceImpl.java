@@ -9,27 +9,24 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.nio.ByteBuffer;
 
-/**
- * @author Chris Turner (chris@forloop.space)
- */
+/** @author Chris Turner (chris@forloop.space) */
 @Slf4j
 @RequiredArgsConstructor
 public class FirehoseServiceImpl implements FirehoseService {
 
-    private final AmazonKinesisFirehose amazonKinesisFirehose;
+  private final AmazonKinesisFirehose amazonKinesisFirehose;
 
-    @Override
-    public PutRecordResult pushRecord(final String deliveryStream, final byte[] bytes) {
+  @Override
+  public PutRecordResult pushRecord(final String deliveryStream, final byte[] bytes) {
 
-        final PutRecordRequest putRecordRequest = new PutRecordRequest();
-        putRecordRequest.setDeliveryStreamName(deliveryStream);
+    final PutRecordRequest putRecordRequest = new PutRecordRequest();
+    putRecordRequest.setDeliveryStreamName(deliveryStream);
 
-        final Record record = new Record().withData(ByteBuffer.wrap(bytes));
-        putRecordRequest.setRecord(record);
+    final Record record = new Record().withData(ByteBuffer.wrap(bytes));
+    putRecordRequest.setRecord(record);
 
-        log.info("firehose record {}", record.toString());
+    log.info("firehose record {}", record.toString());
 
-        return amazonKinesisFirehose.putRecord(putRecordRequest);
-    }
-
+    return amazonKinesisFirehose.putRecord(putRecordRequest);
+  }
 }

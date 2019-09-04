@@ -12,7 +12,7 @@
     <groupId>io.codeshelf</groupId>
     <artifactId>tool-executor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>tool-executor</name>
+    <name>codeshelf-tool-executor</name>
     <description>Handles the execution of commands each tool sends.</description>
 
     <properties>
