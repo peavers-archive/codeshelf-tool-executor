@@ -6,5 +6,5 @@ import java.util.List;
 /** @author Chris Turner (chris@forloop.space) */
 public interface ProcessService {
 
-  void execute(List<String> command) throws IOException, InterruptedException;
+  String execute(List<String> command) throws IOException, InterruptedException;
 }

@@ -24,8 +24,8 @@ public class ProcessServiceImpl implements ProcessService {
   private boolean dry;
 
   @Override
-  public void execute(final List<String> command) throws IOException {
-    log.info("executing command {}", Arrays.toString(command.toArray()).replace(",", ""));
+  public String execute(final List<String> command) throws IOException {
+    log.info("running command {}", Arrays.toString(command.toArray()).replace(",", ""));
 
     final ProcessBuilder processBuilder = new ProcessBuilder(command);
     final Process process = processBuilder.start();
@@ -35,7 +35,7 @@ public class ProcessServiceImpl implements ProcessService {
     if (StringUtils.isNotBlank(error)) {
       log.error(error);
     } else {
-      log.info("result {}", output);
+      log.info("output {}", output);
     }
 
     if (dry) {
@@ -46,6 +46,8 @@ public class ProcessServiceImpl implements ProcessService {
 
     process.getInputStream().close();
     process.getErrorStream().close();
+
+    return output;
   }
 
   private String consoleOutput(final InputStream stream) {
