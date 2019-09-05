@@ -3,6 +3,7 @@ package io.codeshelf.tool.executor.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.json.XML;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.BufferedReader;
@@ -41,13 +42,18 @@ public class ProcessServiceImpl implements ProcessService {
     if (dry) {
       log.info("skipping push to firehose - codeshelf.dry=true");
     } else {
-      firehoseService.pushRecord("code-linter", output.getBytes());
+      firehoseService.pushRecord("code-linter", convertToJson(output).getBytes());
     }
 
     process.getInputStream().close();
     process.getErrorStream().close();
 
     return output;
+  }
+
+  private String convertToJson(final String xml) {
+
+    return xml.startsWith("<") ? XML.toJSONObject(xml).toString() : xml;
   }
 
   private String consoleOutput(final InputStream stream) {
