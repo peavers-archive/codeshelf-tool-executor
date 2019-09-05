@@ -5,6 +5,7 @@ This stand-alone library handles the basic command execution and push to Firehos
 The most important part of a readme of course
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8caaa097d92b431a91e91418bd59590e)](https://www.codacy.com/app/peavers/codeshelf-tool-executor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=peavers/codeshelf-tool-executor&amp;utm_campaign=Badge_Grade)
+[![](https://jitpack.io/v/peavers/codeshelf-tool-executor.svg)](https://jitpack.io/#peavers/codeshelf-tool-executor)
 
 ## Why
 The tools for Codeshelf require the same basic business logic. They all need to execute a `Processbuilder`
