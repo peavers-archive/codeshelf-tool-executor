@@ -24,11 +24,11 @@ plugins {
 }
 
 repositories {
-    mavenLocal()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    implementation 'io.codeshelf:tool-executor:0.0.1-SNAPSHOT' 
+    implementation 'com.github.peavers:codeshelf-tool-executor:-SNAPSHOT' 
 }
 ```
  
