@@ -21,6 +21,7 @@ public class ProcessServiceImpl implements ProcessService {
 
   private final FirehoseService firehoseService;
 
+  /** Should the results be sent to Firehose */
   @Value("${codeshelf.dry}")
   private boolean dry;
 

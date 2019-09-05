@@ -12,9 +12,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "codeshelf")
 public class ToolExecutorProperties {
 
-  /** Should metrics be pushed to Firehose or not. */
+  /** If true, will send results to Firehose. */
   private boolean dry;
 
   /** Directory to run the tool in. */
   private String workingDir;
+
+  /** AWS Kinesis Firehose name */
+  private String deliveryStream;
 }
