@@ -8,11 +8,11 @@ The most important part of a readme of course
 
 ## Why
 The tools for Codeshelf require the same basic business logic. They all need to execute a `Processbuilder`
-with some basic commands, and they all need to send the output to Firehouse. This library is implemented on each tool
+with some basic commands, and they all need to send the output to Firehose. This library is implemented on each tool
 to handle those tasks.  
 
 ## Building locally
-I wasn't able to figure out how to execute `install` locallyt through gradle so this is built with maven. Simply run `mvn clean install`
+I wasn't able to figure out how to execute `install` locally through gradle so this is built with maven. Simply run `mvn clean install`
 Then you should be good to go.
 
 ## Using in other projects
