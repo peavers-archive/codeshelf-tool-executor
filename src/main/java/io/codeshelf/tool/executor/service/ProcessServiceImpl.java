@@ -25,24 +25,27 @@ public class ProcessServiceImpl implements ProcessService {
   private boolean dry;
 
   @Override
-  public String execute(final List<String> command) throws IOException {
+  public String execute(final List<String> command, final String deliveryStream)
+      throws IOException {
     log.info("running command {}", Arrays.toString(command.toArray()).replace(",", ""));
 
     final ProcessBuilder processBuilder = new ProcessBuilder(command);
     final Process process = processBuilder.start();
     final String output = consoleOutput(process.getInputStream());
     final String error = consoleOutput(process.getErrorStream());
+    final String outputJson = convertToJson(output);
 
     if (StringUtils.isNotBlank(error)) {
       log.error(error);
     } else {
-      log.info("output {}", output);
+      log.info("raw output {}", output);
+      log.info("json output {}", outputJson);
     }
 
     if (dry) {
       log.info("skipping push to firehose - codeshelf.dry=true");
     } else {
-      firehoseService.pushRecord("code-linter", convertToJson(output).getBytes());
+      firehoseService.pushRecord(deliveryStream, outputJson.getBytes());
     }
 
     process.getInputStream().close();
