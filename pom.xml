@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>io.codeshelf</groupId>
-    <artifactId>tool-executor</artifactId>
+    <artifactId>codeshelf-tool-executor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>codeshelf-tool-executor</name>
     <description>This stand-alone library handles the basic command execution and push to Firehose.</description>

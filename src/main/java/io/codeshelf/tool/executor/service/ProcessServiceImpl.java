@@ -38,9 +38,14 @@ public class ProcessServiceImpl implements ProcessService {
       log.info("result {}", output);
     }
 
-    if (!dry) {
+    if (dry) {
+      log.info("codeshelf.dry = true; skipping push to firehose");
+    } else {
       firehoseService.pushRecord("code-linter", output.getBytes());
     }
+
+    process.getInputStream().close();
+    process.getErrorStream().close();
   }
 
   private String consoleOutput(final InputStream stream) {
